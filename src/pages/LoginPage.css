@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap');
+
+.login-page {
+  min-height: calc(100vh - 85px);
+  display: flex;
+  background: #faf6ee;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* =========================
+   LEFT DOG SECTION
+========================= */
+
+.login-dog-section {
+  width: 52%;
+  min-height: calc(100vh - 85px);
+  position: relative;
+
+  background-image: url("https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1200&q=85");
+
+  background-size: cover;
+  background-position: center;
+
+  overflow: hidden;
+}
+
+.dog-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20, 55, 48, 0.45),
+      rgba(245, 154, 101, 0.15)
+    );
+}
+
+.dog-content {
+  position: absolute;
+  z-index: 2;
+
+  left: 70px;
+  bottom: 70px;
+
+  max-width: 520px;
+
+  color: white;
+}
+
+.paw-icon {
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+
+  font-size: 27px;
+
+  margin-bottom: 22px;
+}
+
+.dog-content h1 {
+  font-family: 'DM Serif Display', serif;
+
+  font-size: 55px;
+  line-height: 1.05;
+
+  margin: 0 0 20px;
+
+  letter-spacing: -1px;
+}
+
+.dog-content > p {
+  font-size: 16px;
+  line-height: 1.8;
+
+  max-width: 470px;
+
+  margin-bottom: 25px;
+
+  color: #fff;
+}
+
+.dog-quote {
+  border-left: 3px solid #ff7f50;
+
+  padding-left: 18px;
+
+  font-size: 14px;
+  line-height: 1.7;
+
+  max-width: 440px;
+
+  color: #fff;
+}
+
+.dog-quote span {
+  font-family: 'DM Serif Display', serif;
+  font-size: 35px;
+  color: #ffb08c;
+}
+
+
+/* =========================
+   RIGHT FORM SECTION
+========================= */
+
+.login-form-section {
+  width: 48%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 50px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 510px;
+
+  background: rgba(255, 253, 248, 0.97);
+
+  padding: 48px 50px;
+
+  border-radius: 25px;
+
+  border: 1px solid #f3ddd0;
+
+  box-shadow:
+    0 20px 55px rgba(48, 75, 67, 0.12);
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.login-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 25px;
+
+  font-family: Georgia, serif;
+
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.login-paw {
+  font-family: Arial, sans-serif;
+  font-size: 23px;
+
+  margin-right: 7px;
+}
+
+.logo-dark {
+  color: #173f38;
+}
+
+.logo-orange {
+  color: #ef7045;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.login-card h2 {
+  text-align: center;
+
+  font-family: 'DM Serif Display', serif;
+
+  font-size: 42px;
+
+  color: #173f38;
+
+  margin: 0 0 10px;
+}
+
+.login-subtitle {
+  text-align: center;
+
+  color: #73766f;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  margin-bottom: 32px;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #304c45;
+
+  margin-bottom: 8px;
+}
+
+.input-box {
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+
+  border: 1.5px solid #ead7ca;
+
+  border-radius: 12px;
+
+  background: #fffaf5;
+
+  transition: 0.3s;
+}
+
+.input-box:focus-within {
+  border-color: #ff7f50;
+
+  box-shadow: 0 0 0 3px rgba(255, 127, 80, 0.1);
+}
+
+.input-icon {
+  margin-left: 16px;
+
+  font-size: 18px;
+
+  opacity: 0.7;
+}
+
+.input-box input {
+  flex: 1;
+
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  padding: 0 13px;
+
+  font-family: 'Poppins', sans-serif;
+
+  font-size: 14px;
+
+  color: #173f38;
+}
+
+.input-box input::placeholder {
+  color: #a4a19c;
+}
+
+.eye-button {
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 17px;
+
+  margin-right: 14px;
+
+  opacity: 0.7;
+}
+
+
+/* =========================
+   OPTIONS
+========================= */
+
+.login-options {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 5px 0 25px;
+
+  font-size: 13px;
+}
+
+.remember {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #68716d;
+
+  cursor: pointer;
+}
+
+.remember input {
+  accent-color: #ff7f50;
+
+  width: 16px;
+  height: 16px;
+}
+
+.login-options a {
+  color: #ef7045;
+
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.login-options a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-button {
+  width: 100%;
+
+  height: 55px;
+
+  border: none;
+
+  border-radius: 30px;
+
+  background: #ff7f50;
+
+  color: white;
+
+  font-family: 'Poppins', sans-serif;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  box-shadow: 0 10px 22px rgba(255, 127, 80, 0.25);
+
+  transition: 0.3s;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+
+  background: #f56f43;
+
+  box-shadow: 0 14px 28px rgba(255, 127, 80, 0.3);
+}
+
+.login-button span {
+  font-size: 22px;
+}
+
+
+/* =========================
+   REGISTER
+========================= */
+
+.register-section {
+  margin-top: 28px;
+}
+
+.divider {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
+}
+
+.divider span {
+  height: 1px;
+
+  flex: 1;
+
+  background: #eaded5;
+}
+
+.divider p {
+  margin: 0;
+
+  color: #6b716d;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+.register-button {
+  width: 100%;
+
+  height: 52px;
+
+  border-radius: 28px;
+
+  border: 1.5px solid #24574e;
+
+  background: transparent;
+
+  color: #24574e;
+
+  font-family: 'Poppins', sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.register-button:hover {
+  background: #24574e;
+
+  color: white;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .login-page {
+    flex-direction: column;
+  }
+
+  .login-dog-section {
+    width: 100%;
+
+    min-height: 430px;
+  }
+
+  .login-form-section {
+    width: 100%;
+
+    padding: 40px 20px;
+  }
+
+  .dog-content {
+    left: 35px;
+    bottom: 40px;
+  }
+
+  .dog-content h1 {
+    font-size: 42px;
+  }
+}
+
+
+@media (max-width: 550px) {
+
+  .login-dog-section {
+    min-height: 380px;
+  }
+
+  .dog-content {
+    left: 25px;
+    right: 25px;
+    bottom: 30px;
+  }
+
+  .dog-content h1 {
+    font-size: 35px;
+  }
+
+  .dog-content > p,
+  .dog-quote {
+    display: none;
+  }
+
+  .login-card {
+    padding: 35px 25px;
+  }
+
+  .login-card h2 {
+    font-size: 34px;
+  }
+}

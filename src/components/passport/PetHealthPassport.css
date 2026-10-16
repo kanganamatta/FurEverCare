@@ -1,0 +1,837 @@
+/* ==========================================================================
+   DIGITAL PET HEALTH PASSPORT STYLES
+   ========================================================================== */
+
+.passport-page-container {
+  background: var(--cream, #FBF7F0);
+  min-height: 100vh;
+  padding: 40px 4% 100px;
+}
+
+.passport-hero-banner {
+  max-width: 1200px;
+  margin: 0 auto 36px;
+  background: linear-gradient(135deg, #143530 0%, #1F4B43 65%, #23584F 100%);
+  border-radius: 28px;
+  padding: 40px 44px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 45px -20px rgba(20, 53, 48, 0.4);
+}
+
+.passport-hero-banner::after {
+  content: "🩺";
+  position: absolute;
+  right: 40px;
+  bottom: 20px;
+  font-size: 110px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.passport-kicker-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--gold, #F2B705);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.passport-hero-banner h1 {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  color: #ffffff;
+  margin: 0 0 12px;
+  line-height: 1.15;
+}
+
+.passport-hero-banner h1 em {
+  color: var(--apricot, #FF8552);
+  font-style: italic;
+}
+
+.passport-hero-banner p {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 68ch;
+  margin: 0 0 24px;
+}
+
+.passport-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-new-passport {
+  background: var(--apricot, #FF8552);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 0.94rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(255, 133, 82, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-new-passport:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(255, 133, 82, 0.45);
+}
+
+.btn-qr-twist-highlight {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 600;
+  font-size: 0.94rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease;
+}
+
+.btn-qr-twist-highlight:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* PET SELECTOR BAR */
+.passport-pets-selector-row {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.passport-pet-tab-btn {
+  background: #ffffff;
+  border: 2px solid #E5DFD4;
+  border-radius: 20px;
+  padding: 10px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(20, 53, 48, 0.04);
+}
+
+.passport-pet-tab-btn:hover {
+  border-color: var(--forest, #1F4B43);
+  transform: translateY(-2px);
+}
+
+.passport-pet-tab-btn.active {
+  border-color: var(--forest, #1F4B43);
+  background: #F1F7F4;
+  box-shadow: 0 8px 20px rgba(31, 75, 67, 0.12);
+}
+
+.pet-avatar-mini {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+}
+
+.pet-tab-info {
+  text-align: left;
+}
+
+.pet-tab-info strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--forest-dark, #143530);
+}
+
+.pet-tab-info span {
+  font-size: 0.78rem;
+  color: #777;
+}
+
+/* MAIN PASSPORT CARD */
+.passport-card-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 28px;
+  border: 1px solid #EAE3D5;
+  box-shadow: 0 16px 40px rgba(20, 53, 48, 0.07);
+  overflow: hidden;
+}
+
+/* Passport Header Banner */
+.passport-card-top-banner {
+  background: #F8F4EC;
+  border-bottom: 1px solid #E5DFD4;
+  padding: 28px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.passport-header-left {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.pet-main-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 22px;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.passport-identity-block h2 {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: 1.85rem;
+  color: var(--forest-dark, #143530);
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.passport-id-pill {
+  font-family: monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: #E8F0EC;
+  color: var(--forest, #1F4B43);
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+
+.passport-identity-block p {
+  color: var(--ink-soft, #52584F);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.passport-header-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-open-qr-modal {
+  background: var(--forest, #1F4B43);
+  color: #ffffff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 18px rgba(31, 75, 67, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.btn-open-qr-modal:hover {
+  transform: translateY(-2px);
+  background: var(--forest-dark, #143530);
+}
+
+/* PASSPORT NAVIGATION SUB-TABS */
+.passport-sections-nav {
+  display: flex;
+  border-bottom: 1px solid #ECE5D8;
+  padding: 0 36px;
+  overflow-x: auto;
+  gap: 6px;
+  background: #FAF7F2;
+}
+
+.sec-nav-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 16px 18px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink-soft, #52584F);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sec-nav-btn:hover {
+  color: var(--forest-dark, #143530);
+}
+
+.sec-nav-btn.active {
+  color: var(--forest, #1F4B43);
+  border-bottom-color: var(--forest, #1F4B43);
+  background: #ffffff;
+}
+
+.sec-counter-badge {
+  background: #E3DCCE;
+  color: var(--forest-dark, #143530);
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.sec-nav-btn.active .sec-counter-badge {
+  background: var(--apricot, #FF8552);
+  color: #ffffff;
+}
+
+/* SECTION BODY CONTENT */
+.passport-section-body {
+  padding: 36px;
+}
+
+/* VITALS OVERVIEW GRID */
+.vitals-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.vital-card {
+  background: var(--cream, #FBF7F0);
+  border: 1px solid #EAE3D5;
+  border-radius: 16px;
+  padding: 16px 18px;
+}
+
+.vital-card label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 4px;
+  letter-spacing: 0.03em;
+}
+
+.vital-card strong {
+  font-size: 1.05rem;
+  color: var(--forest-dark, #143530);
+  display: block;
+}
+
+/* CRITICAL ALLERGY ALERT BANNER */
+.allergy-danger-banner {
+  background: #FDEDEC;
+  border: 2px solid #F5B7B1;
+  border-radius: 16px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.allergy-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.allergy-danger-content h4 {
+  font-size: 1.05rem;
+  color: #c0392b;
+  margin: 0 0 4px;
+}
+
+.allergy-danger-content p {
+  color: #78281f;
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* DATA TABLES & LISTS */
+.passport-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+
+.passport-table th,
+.passport-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #ECE5D8;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.passport-table th {
+  background: #F9F5EE;
+  font-weight: 700;
+  color: var(--forest-dark, #143530);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+.status-badge-ok {
+  background: #E8F8F0;
+  color: #27ae60;
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-badge-due {
+  background: #FEF9E7;
+  color: #d35400;
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* SMART REMINDER CARDS */
+.reminders-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.reminder-card {
+  background: #ffffff;
+  border: 1.5px solid #E5DFD4;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.reminder-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--forest, #1F4B43);
+}
+
+.reminder-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.reminder-days-pill {
+  background: #FFE8DF;
+  color: var(--apricot-dark, #E8693A);
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+
+.reminder-card h4 {
+  font-size: 1.05rem;
+  color: var(--forest-dark, #143530);
+  margin: 0 0 6px;
+}
+
+.reminder-card p {
+  font-size: 0.86rem;
+  color: var(--ink-soft, #52584F);
+  margin: 0 0 14px;
+  line-height: 1.4;
+}
+
+.btn-schedule-reminder {
+  background: #F2F8F5;
+  border: 1px solid #D4E8DF;
+  color: #174e38;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.btn-schedule-reminder:hover {
+  background: #E1F2EB;
+}
+
+/* PRESCRIPTION & MEDICAL REPORT UPLOADS */
+.upload-dropzone {
+  border: 2px dashed #C8BFB0;
+  border-radius: 18px;
+  background: #FAF7F2;
+  padding: 30px 24px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: all 0.2s ease;
+}
+
+.upload-dropzone:hover {
+  border-color: var(--forest, #1F4B43);
+  background: #F3EFE7;
+}
+
+.upload-dropzone span.icon {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.upload-dropzone strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--forest-dark, #143530);
+  margin-bottom: 4px;
+}
+
+.upload-dropzone small {
+  color: #888;
+  font-size: 0.84rem;
+}
+
+.documents-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.doc-file-card {
+  background: #ffffff;
+  border: 1px solid #E5DFD4;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: all 0.2s ease;
+}
+
+.doc-file-card:hover {
+  border-color: var(--apricot, #FF8552);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.doc-file-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.doc-file-info {
+  flex: 1;
+}
+
+.doc-file-info h5 {
+  font-size: 0.92rem;
+  color: var(--forest-dark, #143530);
+  margin: 0 0 3px;
+  line-height: 1.3;
+}
+
+.doc-file-info span {
+  display: block;
+  font-size: 0.76rem;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.btn-view-doc {
+  background: transparent;
+  border: 1px solid #D5CEC2;
+  color: var(--forest, #1F4B43);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-view-doc:hover {
+  background: #F3ECE0;
+}
+
+/* ==========================================================================
+   MIND-BLOWING TWIST: PERMISSION-CONTROLLED EMERGENCY QR MODAL
+   ========================================================================== */
+.qr-modal-dialog {
+  max-width: 680px;
+  width: 92%;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 34px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.qr-modal-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.qr-twist-badge {
+  background: #E8F5E9;
+  border: 1px solid #A5D6A7;
+  color: #2E7D32;
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 5px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.qr-modal-header h2 {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: 1.8rem;
+  color: var(--forest-dark, #143530);
+  margin: 0 0 6px;
+}
+
+.qr-modal-header p {
+  color: var(--ink-soft, #52584F);
+  font-size: 0.92rem;
+  margin: 0 auto;
+  max-width: 52ch;
+}
+
+/* QR Code Display Card */
+.qr-preview-box {
+  background: var(--cream, #FBF7F0);
+  border: 2px dashed #D5CEC2;
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.qr-image-wrapper {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 16px;
+  display: inline-block;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 12px;
+}
+
+.qr-image-wrapper img {
+  width: 180px;
+  height: 180px;
+  display: block;
+}
+
+.qr-pet-name-caption {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--forest-dark, #143530);
+}
+
+/* PERMISSION LEVEL TOGGLE / DEMO PREVIEW */
+.qr-modes-explanation {
+  background: #FAF7F2;
+  border-radius: 18px;
+  padding: 18px 22px;
+  margin-bottom: 24px;
+  border: 1px solid #ECE5D8;
+}
+
+.qr-mode-card {
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.qr-mode-card.level-1 {
+  background: #FFF9F4;
+  border: 1px solid #FCDBC5;
+}
+
+.qr-mode-card.level-2 {
+  background: #F2F8F5;
+  border: 1px solid #D4E8DF;
+}
+
+.mode-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.mode-details h5 {
+  font-size: 0.92rem;
+  margin: 0 0 3px;
+  color: var(--forest-dark, #143530);
+}
+
+.mode-details p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft, #52584F);
+  line-height: 1.4;
+}
+
+/* PIN UNLOCK DEMO SIMULATOR */
+.pin-unlock-box {
+  background: #ffffff;
+  border: 2px solid #CFE0D6;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.pin-unlock-box h4 {
+  font-size: 1rem;
+  color: var(--forest-dark, #143530);
+  margin: 0 0 6px;
+}
+
+.pin-inputs-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+
+.pin-digit-input {
+  width: 44px;
+  height: 48px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-radius: 10px;
+  border: 1.5px solid #D5CEC2;
+  background: #FAF7F2;
+}
+
+.pin-digit-input:focus {
+  outline: none;
+  border-color: var(--forest, #1F4B43);
+  box-shadow: 0 0 0 3px rgba(31, 75, 67, 0.15);
+}
+
+.btn-unlock-pin {
+  background: var(--forest, #1F4B43);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.unlocked-success-alert {
+  background: #E8F8F0;
+  border: 1px solid #A3E4D7;
+  color: #117864;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* QR Actions Row */
+.qr-modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-copy-qr-link {
+  background: #ffffff;
+  border: 1.5px solid #D5CEC2;
+  color: var(--forest-dark, #143530);
+  border-radius: 999px;
+  padding: 11px 22px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btn-print-tag {
+  background: var(--apricot, #FF8552);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 24px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .vitals-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .reminders-grid {
+    grid-template-columns: 1fr;
+  }
+  .documents-list-grid {
+    grid-template-columns: 1fr;
+  }
+  .passport-header-left {
+    flex-direction: column;
+    text-align: center;
+  }
+  .passport-card-top-banner {
+    justify-content: center;
+  }
+}

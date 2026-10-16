@@ -1,0 +1,539 @@
+/* ============================================================
+   Running Dog Ambient Background Animation
+   High-performance GPU accelerated 60fps CSS animation
+   ============================================================ */
+
+.running-dog-ambient-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  pointer-events: none;
+  z-index: 80;
+  overflow: visible;
+  user-select: none;
+}
+
+.running-dog-ambient-container.is-paused .running-dog-actor,
+.running-dog-ambient-container.is-paused .running-butterfly,
+.running-dog-ambient-container.is-paused .ambient-particles-trail {
+  animation-play-state: paused !important;
+}
+
+/* Bottom Track Grass Blade Accents */
+.running-dog-track {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 18px;
+  background: linear-gradient(to top, rgba(31, 75, 67, 0.08) 0%, transparent 100%);
+  border-bottom: 2px dashed rgba(255, 133, 82, 0.2);
+}
+
+/* Butterfly chasing ahead */
+.running-butterfly {
+  position: absolute;
+  bottom: 60px;
+  left: -80px;
+  width: 24px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: butterflyFlyAcross 11s linear infinite;
+  animation-delay: -1.2s;
+  pointer-events: none;
+  z-index: 82;
+}
+
+.running-butterfly.speed-zoomies {
+  animation-duration: 6.5s;
+}
+
+.running-butterfly.speed-chill {
+  animation-duration: 16s;
+}
+
+@keyframes butterflyFlyAcross {
+  0% {
+    transform: translate(-100px, 0) scale(0.9);
+  }
+  25% {
+    transform: translate(25vw, -30px) scale(1);
+  }
+  50% {
+    transform: translate(50vw, -10px) scale(0.95);
+  }
+  75% {
+    transform: translate(75vw, -35px) scale(1.05);
+  }
+  100% {
+    transform: translate(calc(100vw + 60px), -15px) scale(0.9);
+  }
+}
+
+.butterfly-body {
+  width: 3px;
+  height: 14px;
+  background: #143530;
+  border-radius: 4px;
+}
+
+.butterfly-wing {
+  width: 10px;
+  height: 14px;
+  background: linear-gradient(135deg, #f2b705 0%, #ff8552 100%);
+  border-radius: 50% 50% 20% 50%;
+  box-shadow: 0 0 8px rgba(242, 183, 5, 0.6);
+}
+
+.butterfly-wing.wing-left {
+  animation: flapLeft 0.15s ease-in-out infinite alternate;
+  transform-origin: right center;
+}
+
+.butterfly-wing.wing-right {
+  animation: flapRight 0.15s ease-in-out infinite alternate;
+  transform-origin: left center;
+  border-radius: 50% 50% 50% 20%;
+}
+
+@keyframes flapLeft {
+  from { transform: scaleX(1) rotate(5deg); }
+  to { transform: scaleX(0.15) rotate(25deg); }
+}
+
+@keyframes flapRight {
+  from { transform: scaleX(1) rotate(-5deg); }
+  to { transform: scaleX(0.15) rotate(-25deg); }
+}
+
+/* Main Running Dog Actor */
+.running-dog-actor {
+  position: absolute;
+  bottom: 8px;
+  left: -170px;
+  width: 140px;
+  height: 96px;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 85;
+  filter: drop-shadow(0 6px 12px rgba(20, 53, 48, 0.18));
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: dogRunAcross 11s linear infinite;
+}
+
+.running-dog-actor:hover {
+  filter: drop-shadow(0 8px 18px rgba(255, 133, 82, 0.35));
+}
+
+.running-dog-actor.speed-normal {
+  animation-duration: 11s;
+}
+
+.running-dog-actor.speed-zoomies {
+  animation-duration: 6.5s;
+}
+
+.running-dog-actor.speed-chill {
+  animation-duration: 16s;
+}
+
+@keyframes dogRunAcross {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(100vw + 240px));
+  }
+}
+
+/* Jumping interaction */
+.running-dog-actor.dog-is-jumping .dog-svg-wrapper {
+  animation: dogPlayfulJump 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+}
+
+@keyframes dogPlayfulJump {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  40% {
+    transform: translateY(-44px) rotate(-14deg) scale(1.1);
+  }
+  75% {
+    transform: translateY(-16px) rotate(4deg) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+/* Dog SVG Anatomy & Movement */
+.dog-svg-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.dog-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Ground shadow pulse */
+.dog-ground-shadow {
+  fill: rgba(20, 53, 48, 0.22);
+  animation: shadowSquash 0.28s ease-in-out infinite alternate;
+  transform-origin: 80px 102px;
+}
+
+@keyframes shadowSquash {
+  from {
+    transform: scaleX(0.85) scaleY(1.15);
+    opacity: 0.3;
+  }
+  to {
+    transform: scaleX(1.15) scaleY(0.8);
+    opacity: 0.15;
+  }
+}
+
+/* Torso bobbing */
+.dog-torso-group {
+  animation: torsoBob 0.28s ease-in-out infinite alternate;
+  transform-origin: 80px 52px;
+}
+
+@keyframes torsoBob {
+  from {
+    transform: translateY(-3px) rotate(-1deg);
+  }
+  to {
+    transform: translateY(3px) rotate(1deg);
+  }
+}
+
+/* Head & Ear bob */
+.dog-head-group {
+  animation: headBob 0.28s ease-in-out infinite alternate;
+  transform-origin: 40px 32px;
+}
+
+@keyframes headBob {
+  from {
+    transform: translateY(-2px) rotate(-2deg);
+  }
+  to {
+    transform: translateY(2px) rotate(2deg);
+  }
+}
+
+.dog-floppy-ear {
+  animation: earFlap 0.32s ease-in-out infinite alternate;
+  transform-origin: 39px 18px;
+}
+
+@keyframes earFlap {
+  from {
+    transform: rotate(-14deg);
+  }
+  to {
+    transform: rotate(18deg);
+  }
+}
+
+/* Tail wagging */
+.dog-tail-group {
+  animation: tailWag 0.2s ease-in-out infinite alternate;
+  transform-origin: 122px 46px;
+}
+
+@keyframes tailWag {
+  from {
+    transform: rotate(-16deg);
+  }
+  to {
+    transform: rotate(24deg);
+  }
+}
+
+/* Running Leg Cycles (True Gallop Articulation) */
+.dog-leg-front-near {
+  transform-origin: 52px 56px;
+  animation: frontLegNear 0.32s ease-in-out infinite alternate;
+}
+
+@keyframes frontLegNear {
+  0% {
+    transform: rotate(-28deg);
+  }
+  100% {
+    transform: rotate(32deg);
+  }
+}
+
+.dog-leg-back-near {
+  transform-origin: 112px 56px;
+  animation: backLegNear 0.32s ease-in-out infinite alternate;
+  animation-delay: -0.16s;
+}
+
+@keyframes backLegNear {
+  0% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(-32deg);
+  }
+}
+
+.dog-leg-front-distant {
+  transform-origin: 46px 54px;
+  animation: frontLegDistant 0.32s ease-in-out infinite alternate;
+  animation-delay: -0.18s;
+}
+
+@keyframes frontLegDistant {
+  0% {
+    transform: rotate(26deg);
+  }
+  100% {
+    transform: rotate(-28deg);
+  }
+}
+
+.dog-leg-back-distant {
+  transform-origin: 108px 55px;
+  animation: backLegDistant 0.32s ease-in-out infinite alternate;
+  animation-delay: -0.05s;
+}
+
+@keyframes backLegDistant {
+  0% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(28deg);
+  }
+}
+
+/* Floating speech bubble */
+.dog-speech-bubble {
+  position: absolute;
+  top: -55px;
+  left: 10px;
+  background: #ffffff;
+  color: #1f4b43;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(20, 53, 48, 0.2);
+  border: 1.5px solid #ff8552;
+  animation: bubblePop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  z-index: 100;
+}
+
+@keyframes bubblePop {
+  from {
+    transform: scale(0.6) translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.bubble-pointer {
+  position: absolute;
+  bottom: -6px;
+  left: 24px;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-right: 1.5px solid #ff8552;
+  border-bottom: 1.5px solid #ff8552;
+  transform: rotate(45deg);
+}
+
+/* Ambient Leaves / Sparkles */
+.ambient-particles-trail {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.ambient-leaf {
+  position: absolute;
+  font-size: 14px;
+  opacity: 0.5;
+  animation: driftAcross 14s linear infinite;
+}
+
+.leaf-1 {
+  bottom: 25px;
+  animation-delay: -2s;
+  animation-duration: 12s;
+}
+
+.leaf-2 {
+  bottom: 50px;
+  animation-delay: -7s;
+  animation-duration: 15s;
+}
+
+.leaf-3 {
+  bottom: 10px;
+  animation-delay: -11s;
+  animation-duration: 13s;
+}
+
+@keyframes driftAcross {
+  0% {
+    transform: translate(-50px, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(50vw, -20px) rotate(180deg);
+  }
+  100% {
+    transform: translate(calc(100vw + 50px), 10px) rotate(360deg);
+  }
+}
+
+/* Ambient Control Badge (Discreet in Bottom Left) */
+.running-dog-badge-control {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9998;
+  pointer-events: auto;
+}
+
+.badge-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(251, 247, 240, 0.95);
+  backdrop-filter: blur(8px);
+  color: #1f4b43;
+  border: 1px solid rgba(31, 75, 67, 0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(20, 53, 48, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.badge-toggle-btn:hover {
+  background: #ffffff;
+  border-color: #ff8552;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 133, 82, 0.2);
+}
+
+.running-dog-mini-menu {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  background: #ffffff;
+  border: 1px solid #ebd9c8;
+  border-radius: 16px;
+  padding: 12px;
+  width: 210px;
+  box-shadow: 0 12px 30px rgba(20, 53, 48, 0.2);
+  animation: miniMenuPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes miniMenuPop {
+  from { transform: scale(0.9) translateY(10px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #1f4b43;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f3ecdd;
+}
+
+.menu-header button {
+  background: none;
+  border: none;
+  color: #7b8379;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-opt {
+  background: #fbf7f0;
+  border: 1px solid #ebd9c8;
+  color: #1f4b43;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menu-opt:hover {
+  background: #ff8552;
+  color: white;
+  border-color: #ff8552;
+}
+
+.speed-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.speed-buttons button {
+  background: #fbf7f0;
+  border: 1px solid #ebd9c8;
+  font-size: 10.5px;
+  padding: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #52584f;
+  font-weight: 600;
+}
+
+.speed-buttons button.active {
+  background: #1f4b43;
+  color: white;
+  border-color: #1f4b43;
+}
+
+@media (max-width: 600px) {
+  .running-dog-ambient-container {
+    height: 90px;
+  }
+  .running-dog-actor {
+    width: 110px;
+    height: 75px;
+  }
+  .running-dog-badge-control {
+    bottom: 16px;
+    left: 12px;
+  }
+}
