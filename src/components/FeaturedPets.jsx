@@ -27,11 +27,25 @@ function FeaturedPets({ onPetClick }) {
             onClick={() => onPetClick(pet)}
           >
 
-            <img
-              src={pet.img}
-              alt={pet.name}
-              loading="lazy"
-            />
+            <div className="featured-img-wrap">
+              <img
+                src={pet.img}
+                alt={pet.name}
+                loading="lazy"
+              />
+              <button
+                type="button"
+                className="card-meet-me-slide-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onPetClick(pet);
+                }}
+                title={`Meet ${pet.name}`}
+              >
+                <span>Meet Me</span>
+                <span>🐾</span>
+              </button>
+            </div>
 
             <div className="featured-card-body">
 

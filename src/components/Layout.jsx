@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import PetModal from "./PetModal";
 import RescueAIChatbot from "./RescueAIChatbot";
+import FloatingPawBackground from "./FloatingPawBackground";
 
 function Layout() {
   const [selectedPet, setSelectedPet] = useState(null);
@@ -88,6 +89,7 @@ function Layout() {
 
   return (
     <>
+      <FloatingPawBackground />
       <Navbar />
 
       <Outlet

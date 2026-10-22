@@ -251,28 +251,72 @@ function RescueMap({
             <text x="510" y="240" fill="#1F4B43" fontSize="18" fontWeight="800">Grand Trunk Ring Road</text>
             <text x="510" y="490" fill="#6B7A6A" fontSize="16" fontWeight="700">Central Veterinary Zone</text>
             <text x="720" y="650" fill="#6B7A6A" fontSize="16" fontWeight="700">East Wildlife Sanctuary</text>
+
+            {/* LIVE ACTIVE EMERGENCY DISPATCH ROUTE (Vehicle moves along this route) */}
+            <path
+              d="M 490 350 L 490 210 L 220 210 L 220 250 L 280 245"
+              fill="none"
+              stroke="rgba(255, 133, 82, 0.45)"
+              strokeWidth="14"
+              strokeLinecap="round"
+              className="route-glow-trail"
+            />
+            <path
+              id="rescueEmergencyRoute"
+              d="M 490 350 L 490 210 L 220 210 L 220 250 L 280 245"
+              fill="none"
+              stroke="#FF8552"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeDasharray="14 10"
+              className="animated-route-path"
+            />
+
+            {/* LIVE MOVING RESCUE VEHICLE (AMBULANCE) */}
+            <g className="live-moving-ambulance-marker">
+              <animateMotion
+                dur="9s"
+                repeatCount="indefinite"
+                rotate="auto"
+                path="M 490 350 L 490 210 L 220 210 L 220 250 L 280 245"
+              />
+              <circle cx="0" cy="0" r="22" fill="#143530" stroke="#FF8552" strokeWidth="3" />
+              <text x="0" y="6" textAnchor="middle" fontSize="18">🚑</text>
+              {/* Flashing blue and red sirens */}
+              <circle cx="-9" cy="-14" r="5" fill="#3B82F6">
+                <animate attributeName="opacity" values="0.2;1;0.2" dur="0.6s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="9" cy="-14" r="5" fill="#EF4444">
+                <animate attributeName="opacity" values="1;0.2;1" dur="0.6s" repeatCount="indefinite" />
+              </circle>
+            </g>
           </svg>
 
           {/* Render Active Markers */}
           {filteredMarkers.map((marker) => {
             const isSelected = selectedMarker?.id === marker.id;
+            const isRescueDistress = marker.type === "rescue";
+
             return (
               <div
                 key={marker.id}
-                className={`map-marker-pin marker-${marker.type} ${isSelected ? "selected" : ""}`}
+                className={`map-marker-pin marker-${marker.type} ${isSelected ? "selected" : ""} ${isRescueDistress ? "active-rescue-pulse" : ""}`}
                 style={{ left: `${marker.x}%`, top: `${marker.y}%` }}
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelectedMarker(isSelected ? null : marker);
                 }}
               >
-                <div className="marker-radar-wave" />
+                <div className={`marker-radar-wave ${isRescueDistress ? "active-radar-wave" : ""}`} />
                 <div className="marker-icon-bubble">
                   {marker.type === "ambulance" && "🚑"}
                   {marker.type === "hospital" && "🏥"}
                   {marker.type === "rescue" && "🚨"}
                 </div>
                 <span className="marker-label-tag">{marker.title.split(" ")[0]}</span>
+                {isRescueDistress && (
+                  <span className="active-incident-pill">ACTIVE DISPATCH</span>
+                )}
               </div>
             );
           })}

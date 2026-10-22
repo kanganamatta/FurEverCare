@@ -63,7 +63,7 @@ const KNOWLEDGE_RESPONSES = [
 • Call the veterinary clinic ahead of time so they can prepare emergency oxygen and triage tables!`,
     quickActions: [
       { label: "📍 Report Rescue to Volunteers", action: "navigate_rescue" },
-      { label: "🐾 Need Help with Shelter?", action: "navigate_pets" }
+      { label: "🐾 Need Help with Shelter?", action: "navigate_adopt" }
     ]
   },
   {
@@ -90,7 +90,7 @@ const KNOWLEDGE_RESPONSES = [
 3. **Meet & Greet:** Arrange a video call or in-person shelter visit to meet your future companion.
 4. **Home Check & Welcome:** A brief volunteer check ensures pet-proofing, followed by medical paperwork and zero adoption fees for rescues!`,
     quickActions: [
-      { label: "🐶 Browse Available Pets", action: "navigate_pets" },
+      { label: "🐶 Browse Available Pets", action: "navigate_adopt" },
       { label: "📝 Start Adoption Application", action: "navigate_adopt" }
     ]
   },
@@ -223,7 +223,7 @@ What specific symptoms or behavior are you noticing? (e.g. bleeding, limping, le
       quickActions: [
         { label: "📍 Report Rescue on Map", action: "navigate_rescue" },
         { label: "📞 Call Emergency Line", action: "call_helpline" },
-        { label: "🐶 Browse Adoptable Pets", action: "navigate_pets" }
+        { label: "🐶 Browse Adoptable Pets", action: "navigate_adopt" }
       ]
     };
   };
@@ -329,7 +329,7 @@ Provide clear bulleted steps, emergency triage, warmth/shock treatment, and enco
       navigate("/medical");
       setIsOpen(false);
     } else if (qa.action === "navigate_pets") {
-      navigate("/pets");
+      navigate("/adopt");
       setIsOpen(false);
     } else if (qa.action === "call_helpline") {
       window.location.href = "tel:18004192273";

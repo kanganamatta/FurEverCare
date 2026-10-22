@@ -1,7 +1,8 @@
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 
 import Layout from "./components/Layout";
@@ -11,11 +12,8 @@ import LoginPage from "./pages/LoginPage";
 import AdoptPage from "./pages/AdoptPage";
 import RescuePage from "./pages/RescuePage";
 import MedicalPage from "./pages/MedicalPage";
-import PetsPage from "./pages/PetsPage";
 import PassportPage from "./pages/PassportPage";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
-
+import AIScanPage from "./pages/AIScanPage";
 
 function App() {
   return (
@@ -53,23 +51,18 @@ function App() {
           />
 
           <Route
-            path="/pets"
-            element={<PetsPage />}
-          />
-
-          <Route
             path="/passport"
             element={<PassportPage />}
           />
 
           <Route
-            path="/about"
-            element={<AboutPage />}
+            path="/ai-scan"
+            element={<AIScanPage />}
           />
 
           <Route
-            path="/contact"
-            element={<ContactPage />}
+            path="/scan"
+            element={<Navigate to="/ai-scan" replace />}
           />
 
         </Route>

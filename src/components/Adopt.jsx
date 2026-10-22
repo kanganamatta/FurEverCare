@@ -30,10 +30,13 @@ function Adopt({ onPetClick, showToast }) {
 
   // Meet and Greet Modal state
   const [selectedPetForMeet, setSelectedPetForMeet] = useState(null);
+  const [poppingPetId, setPoppingPetId] = useState(null);
 
   // Toggle Wishlist handler
   const handleToggleWishlist = (pet, e) => {
     if (e) e.stopPropagation();
+    setPoppingPetId(pet.id);
+    setTimeout(() => setPoppingPetId(null), 700);
 
     setWishlist((prev) => {
       const isFavorited = prev.includes(pet.id);
@@ -281,10 +284,10 @@ function Adopt({ onPetClick, showToast }) {
                     {pet.species === "other" ? "Small pet" : pet.species}
                   </span>
 
-                  {/* Wishlist Heart Button */}
+                  {/* Wishlist Heart Button with Pop Animation */}
                   <button
                     type="button"
-                    className={`card-wishlist-heart ${isFavorited ? "active" : ""}`}
+                    className={`card-wishlist-heart ${isFavorited ? "active" : ""} ${poppingPetId === pet.id ? "popping" : ""}`}
                     onClick={(e) => handleToggleWishlist(pet, e)}
                     title={isFavorited ? "Remove from wishlist" : "Save to wishlist"}
                     aria-label={`Save ${pet.name} to wishlist`}
@@ -298,6 +301,17 @@ function Adopt({ onPetClick, showToast }) {
                       📍 {pet.distanceKm} km · {pet.shelter?.split(" ")[0]}
                     </span>
                   )}
+
+                  {/* Orange "Meet Me" button slides into view on hover */}
+                  <button
+                    type="button"
+                    className="card-meet-me-slide-btn"
+                    onClick={(e) => handleOpenMeetModal(pet, e)}
+                    title={`Meet ${pet.name}`}
+                  >
+                    <span>Meet Me</span>
+                    <span className="slide-btn-arrow">→</span>
+                  </button>
 
                   <img
                     src={pet.img}

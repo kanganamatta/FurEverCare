@@ -1,0 +1,121 @@
+/* ==========================================================================
+   FLOATING PAW-PRINT BACKGROUND COMPONENT STYLES
+   Subtle ambient drifting paw prints, hearts, and sparkles
+   ========================================================================== */
+
+.floating-paw-bg-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  contain: strict;
+  transition: opacity 0.5s ease;
+}
+
+/* Page-specific ambient subtlety */
+.floating-paw-bg-container.density-home {
+  opacity: 0.85;
+}
+
+.floating-paw-bg-container.density-adopt {
+  opacity: 0.9;
+}
+
+.floating-paw-bg-container.density-about {
+  opacity: 0.95;
+}
+
+.floating-paw-bg-container.density-subtle {
+  opacity: 0.75;
+}
+
+/* Individual floating particle */
+.floating-paw-particle {
+  position: absolute;
+  bottom: -60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--apricot, #FF8552);
+  fill: currentColor;
+  will-change: transform, opacity;
+  animation-name: floatDriftUpward;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-iteration-count: infinite;
+  user-select: none;
+}
+
+/* Paw print variant */
+.floating-paw-particle.particle-paw {
+  color: #1F4B43; /* Forest tint */
+  opacity: 0.085;
+}
+
+.floating-paw-particle.particle-paw.accent {
+  color: #FF8552; /* Apricot tint */
+  opacity: 0.11;
+}
+
+/* Heart variant */
+.floating-paw-particle.particle-heart {
+  color: #E8693A;
+  opacity: 0.12;
+  filter: drop-shadow(0 2px 4px rgba(232, 105, 58, 0.15));
+}
+
+/* Sparkle variant */
+.floating-paw-particle.particle-sparkle {
+  color: #F2B705; /* Gold */
+  opacity: 0.15;
+  filter: drop-shadow(0 0 6px rgba(242, 183, 5, 0.35));
+}
+
+/* Upward floating keyframe with organic sinusoidal sway */
+@keyframes floatDriftUpward {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg) scale(0.85);
+    opacity: 0;
+  }
+  15% {
+    opacity: var(--target-opacity, 0.12);
+  }
+  50% {
+    transform: translateY(-55vh) translateX(var(--drift-x, 28px)) rotate(var(--drift-rot, 18deg)) scale(1.05);
+    opacity: var(--target-opacity, 0.12);
+  }
+  85% {
+    opacity: var(--target-opacity, 0.12);
+  }
+  100% {
+    transform: translateY(-115vh) translateX(calc(var(--drift-x, 28px) * -0.7)) rotate(calc(var(--drift-rot, 18deg) * 1.6)) scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* Micro pulse sparkle animation */
+@keyframes sparkleTwinkle {
+  0%, 100% {
+    transform: scale(0.9) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.25) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+.particle-sparkle svg {
+  animation: sparkleTwinkle 3.2s ease-in-out infinite;
+}
+
+/* Prefers-reduced-motion: Keep visible at low static opacity without floating movement */
+@media (prefers-reduced-motion: reduce) {
+  .floating-paw-particle {
+    animation: none !important;
+    bottom: auto;
+    opacity: 0.05 !important;
+  }
+}

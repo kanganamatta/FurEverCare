@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <footer className="footer" id="contact">
@@ -6,12 +8,12 @@ function Footer() {
 
         <div className="footer-brand">
 
-          <a href="#home" className="logo">
+          <Link to="/" className="logo">
             <span>🐾</span>
             <span>
               Furever<em>Care</em>
             </span>
-          </a>
+          </Link>
 
           <p>
             A home for every paw, and care for every crisis
@@ -25,10 +27,11 @@ function Footer() {
           <div>
             <h4>Explore</h4>
 
-            <a href="#adopt">Adopt a pet</a>
-            <a href="#rescue">Rescue an animal</a>
-            <a href="#medical">Medical assistance</a>
-            <a href="#about">About us</a>
+            <Link to="/adopt">Adopt a pet</Link>
+            <Link to="/rescue">Rescue an animal</Link>
+            <Link to="/medical">Medical assistance</Link>
+            <Link to="/passport">Pet Health Passport</Link>
+            <Link to="/ai-scan">AI Disease Scan 🐾</Link>
           </div>
 
           <div>
@@ -47,7 +50,7 @@ function Footer() {
 
         </div>
 
-        <form className="footer-form">
+        <form className="footer-form" onSubmit={(e) => { e.preventDefault(); alert("Thank you! Our rescue care team will contact you shortly."); }}>
 
           <h4>Ask us anything</h4>
 
@@ -69,7 +72,7 @@ function Footer() {
             required
           />
 
-          <button className="btn btn-primary btn-sm btn-block">
+          <button type="submit" className="btn btn-primary btn-sm btn-block">
             Send message
           </button>
 

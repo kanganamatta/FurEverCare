@@ -1,0 +1,192 @@
+* PawPrint digital identity profile styles */
+.pawprint-clickable-photo {
+  cursor: pointer;
+  position: relative;
+}
+.pawprint-clickable-photo:focus-visible {
+  outline: 3px solid #3b8c70;
+  outline-offset: 3px;
+}
+.pawprint-photo-hint {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 2;
+  padding: 7px 11px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(25, 54, 43, 0.88);
+  font-size: 0.78rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+.pawprint-clickable-photo:hover .pawprint-photo-hint,
+.pawprint-clickable-photo:focus-visible .pawprint-photo-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+.pawprint-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  background: rgba(15, 28, 22, 0.72);
+  backdrop-filter: blur(5px);
+  overflow-y: auto;
+}
+.pawprint-modal {
+  position: relative;
+  width: min(100%, 1000px);
+  max-height: calc(100vh - 44px);
+  overflow-y: auto;
+  padding: 28px;
+  border-radius: 24px;
+  background: #fffdf8;
+  color: #26382e;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  animation: pawprint-appear 0.22s ease-out;
+}
+@keyframes pawprint-appear {
+  from { opacity: 0; transform: translateY(10px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.pawprint-close-btn {
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: #edf2ec;
+  color: #243b2e;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+.pawprint-profile-hero {
+  display: grid;
+  grid-template-columns: minmax(150px, 250px) 1fr;
+  gap: 26px;
+  align-items: center;
+  padding: 8px 28px 26px 0;
+  border-bottom: 1px solid #e3e9df;
+}
+.pawprint-profile-photo {
+  width: 100%;
+  aspect-ratio: 4 / 4.3;
+  object-fit: cover;
+  border-radius: 18px;
+  background: #e9eee5;
+}
+.pawprint-eyebrow {
+  color: #398263;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  font-weight: 800;
+}
+.pawprint-profile-intro h2 {
+  margin: 9px 0 5px;
+  color: #203b2c;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+}
+.pawprint-profile-intro p {
+  margin: 8px 0;
+  line-height: 1.55;
+}
+.pawprint-id {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 7px;
+  background: #eaf3e9;
+  color: #2c6b4e;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+.pawprint-profile-desc { margin-top: 14px !important; }
+.pawprint-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: 22px;
+}
+.pawprint-info-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #e2e9df;
+  border-radius: 16px;
+  background: #fff;
+}
+.pawprint-info-card h3 {
+  margin: 0 0 12px;
+  color: #2b6248;
+  font-size: 1rem;
+}
+.pawprint-info-card p,
+.pawprint-info-card li {
+  font-size: 0.91rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.pawprint-info-card p { margin: 8px 0; }
+.pawprint-info-card ul { padding-left: 20px; margin: 8px 0 0; }
+.pawprint-info-card li + li { margin-top: 7px; }
+.pawprint-not-recorded { color: #6d776f; }
+.pawprint-qr-card { text-align: center; }
+.pawprint-qr-image {
+  display: block;
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  margin: 10px auto;
+  border: 1px solid #e5e9e1;
+  border-radius: 10px;
+  background: #fff;
+}
+.pawprint-copy-link-btn {
+  margin-top: 7px;
+  padding: 10px 14px;
+  border: 1px solid #b9d3c0;
+  border-radius: 10px;
+  color: #285b43;
+  background: #eff6ed;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pawprint-copy-link-btn:hover { background: #e1efdf; }
+.pawprint-profile-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #e3e9df;
+}
+.pawprint-profile-footer p {
+  margin: 0;
+  color: #68746b;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+.pawprint-profile-footer .meet-greet-card-btn { flex-shrink: 0; }
+@media (max-width: 650px) {
+  .pawprint-modal-backdrop { padding: 10px; align-items: flex-start; }
+  .pawprint-modal { max-height: calc(100vh - 20px); padding: 18px; border-radius: 18px; }
+  .pawprint-profile-hero { grid-template-columns: 105px minmax(0, 1fr); gap: 14px; padding-right: 25px; }
+  .pawprint-profile-photo { border-radius: 12px; }
+  .pawprint-profile-intro h2 { font-size: 1.55rem; }
+  .pawprint-eyebrow { font-size: 0.62rem; letter-spacing: 0.06em; }
+  .pawprint-profile-grid { grid-template-columns: 1fr; gap: 11px; }
+  .pawprint-info-card { padding: 15px; }
+  .pawprint-profile-footer { align-items: stretch; flex-direction: column; }
+  .pawprint-profile-footer .meet-greet-card-btn { width: 100%; }
+}
